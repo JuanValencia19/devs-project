@@ -467,7 +467,7 @@ Puedes utilizarlo, modificarlo y compartirlo libremente dando el crédito corres
 Si estás listo para empezar este viaje:
 
 1. Clona el repositorio.
-2. Lee el contenido de `00-Bienvenida`.
+2. Lee el contenido de `00-bienvenida`.
 3. Configura tu entorno de desarrollo.
 4. Completa el primer proyecto.
 5. Disfruta del proceso.
@@ -476,4 +476,4 @@ Si estás listo para empezar este viaje:
 
 > **"La disciplina supera al talento cuando el talento no es disciplinado."**
 
-**Bienvenido a The Odin Project ES – AI Engineer Edition 2026.**
+**Bienvenido a DEVS PROJECT – AI Engineer Edition 2026.**
