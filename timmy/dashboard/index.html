@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- ========================================================================
+  DEVS PROJECT - DASHBOARD
+  ============================================================================
+  Dashboard interactivo para visualizar el progreso de los proyectos
+  del plan de estudios DEVS PROJECT: AI Engineer Edition 2026.
+
+  CARACTERÍSTICAS:
+  - Diseño glassmorphism con tema oscuro/claro
+  - Grid de módulos con animaciones de entrada
+  - Detalle expandible de proyectos por módulo
+  - Filtros para organizar la vista
+  - Estadísticas con contadores animados
+  - Barra de progreso de scroll
+  - Totalmente responsive
+
+  TECNOLOGÍAS:
+  - HTML5 semántico (accesibilidad y SEO)
+  - CSS3 avanzado (Custom Properties, Grid, Flexbox, Animaciones)
+  - JavaScript vanilla (ES6+, IntersectionObserver, localStorage)
+  - Font Awesome 6 para iconografía
+  - Google Fonts (Inter) para tipografía
+  ======================================================================== -->
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Meta tags para SEO y accesibilidad -->
+  <meta name="description" content="Dashboard de proyectos - DEVS PROJECT: AI Engineer Edition 2026" />
+  <meta name="author" content="Timmy" />
+  <meta name="theme-color" content="#0a0a1a" />
+
+  <!-- Título de la página -->
+  <title>DEVS PROJECT · Dashboard</title>
+
+  <!-- ======================================================================
+    FUENTES
+    ========================================================================
+    Inter: tipografía moderna de Google Fonts, optimizada para pantallas.
+    Cargamos solo los pesos que necesitamos para reducir el impacto.
+    ======================================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ======================================================================
+    ICONOS
+    ========================================================================
+    Font Awesome 6 Free - Iconografía profesional y consistente.
+    ======================================================================== -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- ======================================================================
+    ESTILOS
+    ======================================================================== -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ====================================================================
+    BARRA DE PROGRESO DE SCROLL
+    ======================================================================
+    Indicador visual del progreso de lectura/scroll en la página.
+    ==================================================================== -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ====================================================================
+    HEADER / NAVEGACIÓN
+    ======================================================================
+    Barra de navegación fija con efecto glassmorphism (blur + transparencia).
+    ==================================================================== -->
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <!-- Logo -->
+      <a href="#" class="header__logo" aria-label="DEVS PROJECT Dashboard">
+        <span class="header__logo-icon" aria-hidden="true">
+          <i class="fas fa-rocket"></i>
+        </span>
+        <span>DEVS PROJECT</span>
+      </a>
+
+      <!-- Acciones de la cabecera -->
+      <div class="header__actions">
+        <!-- Botón de cambio de tema (oscuro/claro) -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Cambiar tema"
+          title="Cambiar tema"
+        >
+          <i id="theme-icon" class="fas fa-sun" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+    HERO SECTION
+    ======================================================================
+    Sección principal de bienvenida con fondo animado y CTA.
+    ==================================================================== -->
+  <section class="hero" role="region" aria-label="Bienvenida">
+    <!-- Fondo animado -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__gradient hero__gradient--1"></div>
+      <div class="hero__gradient hero__gradient--2"></div>
+      <div class="hero__gradient hero__gradient--3"></div>
+      <div class="hero__grid"></div>
+    </div>
+
+    <!-- Contenido del hero -->
+    <div class="hero__content">
+      <!-- Badge de estado en vivo -->
+      <div class="hero__badge">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        Proyecto en vivo
+      </div>
+
+      <!-- Título principal con gradiente -->
+      <h1 class="hero__title">
+        Mis Proyectos<br />
+        <span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          DEVS PROJECT
+        </span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="hero__subtitle">
+        Explorá cada uno de los módulos y proyectos que voy construyendo
+        en mi camino para convertirme en Ingeniero de Software con
+        especialización en Inteligencia Artificial y Agentes.
+      </p>
+
+      <!-- Botón de llamada a la acción -->
+      <button id="hero-cta" class="hero__cta">
+        <span>Explorar módulos</span>
+        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+    STATS SECTION
+    ======================================================================
+    Tarjetas de estadísticas generales con contadores animados.
+    Se renderiza dinámicamente desde JavaScript.
+    ==================================================================== -->
+  <section class="stats" role="region" aria-label="Estadísticas">
+    <div class="stats__grid" id="stats-grid">
+      <!-- Generado por JavaScript -->
+    </div>
+  </section>
+
+  <!-- ====================================================================
+    FILTROS
+    ======================================================================
+    Botones para filtrar módulos por estado (Todos, Completados, etc.).
+    ==================================================================== -->
+  <section class="filters" role="region" aria-label="Filtros">
+    <h2 class="filters__title">
+      <i class="fas fa-cubes" aria-hidden="true"></i>
+      Módulos
+    </h2>
+    <div class="filters__group" id="filters-group">
+      <!-- Generado por JavaScript -->
+    </div>
+  </section>
+
+  <!-- ====================================================================
+    MODULES GRID
+    ======================================================================
+    Cuadrícula principal de tarjetas de módulos con proyectos.
+    Cada tarjeta se renderiza dinámicamente desde JavaScript.
+    ==================================================================== -->
+  <main class="modules" role="main">
+    <div class="modules__grid" id="modules-grid">
+      <!-- Generado por JavaScript -->
+    </div>
+  </main>
+
+  <!-- ====================================================================
+    FOOTER
+    ====================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <p class="footer__text">
+        Hecho con <span class="footer__heart" aria-hidden="true">&hearts;</span> por
+        <strong>Timmy</strong> &middot; DEVS PROJECT &copy; 2026
+      </p>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+    BOTÓN VOLVER ARRIBA
+    ======================================================================
+    Aparece al hacer scroll hacia abajo para volver al inicio suavemente.
+    ==================================================================== -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" title="Volver arriba">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ====================================================================
+    SCRIPTS
+    ======================================================================
+    Se cargan al final del body para no bloquear el renderizado.
+    Orden: data.js (datos) - app.js (lógica)
+    ==================================================================== -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
