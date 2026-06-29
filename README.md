@@ -476,4 +476,4 @@ Si estás listo para empezar este viaje:
 
 > **"La disciplina supera al talento cuando el talento no es disciplinado."**
 
-**Bienvenido a The Odin Project ES – AI Engineer Edition 2026.**
+**Bienvenido a DevsProject ES – AI Engineer Edition 2026.**
